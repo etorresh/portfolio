@@ -1,0 +1,24 @@
+.my-faces {
+  margin-top: 250px;
+  position: relative;
+}
+
+.my-face {
+  display: block;
+  border-radius: 50%;
+  width: 125px;
+  height: 125px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  margin-left: -62.5px;
+}
+
+.restart-face {
+  z-index: 1;
+}
+
+.my-name {
+  padding-top: 22px;
+  text-align: center;
+}

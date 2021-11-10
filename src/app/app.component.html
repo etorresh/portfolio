@@ -1,1 +1,11 @@
-<h1>Emilio Torres</h1>
+<div class="my-faces">
+  <img class="my-face" [ngClass]="{'restart-face' : restartFace}" src="../assets/myFace/myFace1.jpg" alt="Emilio Torres' face 1" (click)="onFaceClick()"
+       [@nextFace]="this.myFaces[0] ? 'show' : 'hide'">
+  <img class="my-face" src="../assets/myFace/myFace2.png" alt="Emilio Torres' face 2" (click)="onFaceClick()"
+       [@nextFace]="this.myFaces[1] ? 'show' : 'hide'">
+  <img class="my-face" src="../assets/myFace/myFace3.jpg" alt="Emilio Torres' face 3" (click)="onFaceClick()"
+       [@nextFace]="this.myFaces[2] ? 'show' : 'hide'">
+  <img class="my-face" src="../assets/myFace/myFace4.png" alt="Emilio Torres' face 4" (click)="onFaceClick()"
+       [@nextFace]="this.myFaces[3] ? 'show' : 'hide'">
+</div>
+<h1 class="my-name" (click)="onFaceClick()">Emilio Torres</h1>
