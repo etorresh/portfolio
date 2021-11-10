@@ -22,4 +22,45 @@
   margin-top: 0;
   padding-top: 22px;
   text-align: center;
+  margin-bottom: 10px;
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.info-logo {
+  width: 25px;
+}
+
+.box-logo {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  outline-style: solid;
+  outline-width: 2px;
+  cursor: pointer;
+}
+
+.box-email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 156px;
+  height: 40px;
+  outline-style: solid;
+  outline-width: 2px;
+  margin-top: 18px;
+}
+
+.flex-br {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

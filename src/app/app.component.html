@@ -1,11 +1,20 @@
 <div class="my-faces">
-  <img class="my-face" [ngClass]="{'restart-face' : restartFace}" src="../assets/myFace/myFace1.jpg" alt="Emilio Torres' face 1" (click)="onFaceClick()"
-       [@nextFace]="this.myFaces[0] ? 'show' : 'hide'">
-  <img class="my-face" src="../assets/myFace/myFace2.png" alt="Emilio Torres' face 2" (click)="onFaceClick()"
-       [@nextFace]="this.myFaces[1] ? 'show' : 'hide'">
-  <img class="my-face" src="../assets/myFace/myFace3.jpg" alt="Emilio Torres' face 3" (click)="onFaceClick()"
-       [@nextFace]="this.myFaces[2] ? 'show' : 'hide'">
-  <img class="my-face" src="../assets/myFace/myFace4.png" alt="Emilio Torres' face 4" (click)="onFaceClick()"
-       [@nextFace]="this.myFaces[3] ? 'show' : 'hide'">
+  <img *ngFor="let image of carousel.images; index as i" src="{{image.src}}" alt="Emilio Torres' face" (click)="carousel.nextImage()"
+  class="my-face" [@nextFace]="this.carousel.images[i].show ? 'show' : 'hide'" [ngClass]="{'restart-face' : carousel.restartFace && i == 0}">
 </div>
-<h1 class="my-name" (click)="onFaceClick()">Emilio Torres</h1>
+<h1 class="my-name">Emilio Torres</h1>
+<div class="info">
+  <div class="box-logo" style="margin-right: 18px">
+    <img class="info-logo" src="assets/info/github.svg">
+  </div>
+  <div class="box-logo">
+    <img class="info-logo" src="assets/info/curriculum__profile__resume.svg">
+  </div>
+  <div class="box-logo" style="margin-left: 18px">
+    <img class="info-logo" src="assets/info/fi-xnsuxl-linkedin.svg">
+  </div>
+  <div class="flex-br"></div>
+  <div class="box-email">
+    <a href="mailto:me@etorresh.com" target="_blank">me@etorresh.com</a>
+  </div>
+</div>

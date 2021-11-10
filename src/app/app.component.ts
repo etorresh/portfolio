@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {Carousel} from "./models/Carousel";
 
 @Component({
   selector: 'app-root',
@@ -23,18 +24,5 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   ]
 })
 export class AppComponent {
-  currentFace = 0;
-  restartFace = false;
-  myFaces = [true, false, false, false];
-  onFaceClick() {
-    this.myFaces[this.currentFace] = false;
-    if(this.currentFace == this.myFaces.length - 1) {
-      this.restartFace = true;
-      this.currentFace = 0;
-    } else {
-      this.restartFace = false;
-      this.currentFace++;
-    }
-    this.myFaces[this.currentFace] = true;
-  }
+  public carousel = new Carousel(['assets/myFace/myFace1.jpg', 'assets/myFace/myFace2.png', 'assets/myFace/myFace3.jpg', 'assets/myFace/myFace4.png']);
 }
