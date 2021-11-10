@@ -35,13 +35,19 @@
   width: 25px;
 }
 
+.link-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .box-logo {
   display: flex;
   justify-content: center;
   width: 40px;
   height: 40px;
   outline-style: solid;
-  outline-width: 2px;
+  outline-width: 1.5px;
   cursor: pointer;
 }
 
@@ -52,7 +58,7 @@
   width: 156px;
   height: 40px;
   outline-style: solid;
-  outline-width: 2px;
+  outline-width: 1.5px;
   margin-top: 18px;
 }
 
@@ -63,4 +69,33 @@
 a {
   text-decoration: none;
   color: black;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.card {
+  width: 300px;
+  height: 176px;
+  outline: rgba(0, 0, 0, 0.34) solid 1px;
+  border-radius: 3px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 0;
 }
