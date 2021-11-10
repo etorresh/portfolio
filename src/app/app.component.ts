@@ -23,7 +23,6 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   ]
 })
 export class AppComponent {
-  title = 'Emilio Torres';
   currentFace = 0;
   restartFace = false;
   myFaces = [true, false, false, false];
