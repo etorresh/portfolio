@@ -1,5 +1,6 @@
 .my-faces {
-  margin-top: 250px;
+  /*margin-top: 250px;*/
+  margin-top: 144px;
   position: relative;
 }
 
@@ -72,9 +73,10 @@ a {
 }
 
 .card-container {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -82,20 +84,42 @@ a {
   height: 176px;
   outline: rgba(0, 0, 0, 0.34) solid 1px;
   border-radius: 3px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 30px;
 }
 
-.card-body {
+.card-padding {
   padding: 15px;
+  display: flex;
 }
 
 .card-title {
-  font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 10px;
+  font-size: 14px;
+  margin: 0;
 }
 
 .card-subtitle {
-  font-size: 14px;
+  font-size: 12px;
   font-style: italic;
-  margin-top: 0;
+  margin: 5px 0 0;
+}
+
+.job-logo {
+  width: 40px;
+  height: 43px;
+}
+
+.card-head {
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+@media only screen and (min-width: 1006px) {
+  .first-row {
+    width: calc((100% - 990px) / 2)
+  }
+  .second-row {
+    width: calc((100% - 660px) / 2);
+  }
 }

@@ -8,7 +8,6 @@ export class Carousel {
     for(let source of sources) {
       this.images.push(new CarouselImage(source, false));
     }
-    console.log(this.images);
     this.images[0].show = true;
   }
 
