@@ -90,13 +90,18 @@ a {
 }
 
 .card-padding {
+  width: 300px;
+  height: 176px;
   padding: 15px;
+  box-sizing: border-box;
   display: flex;
+  flex-flow: column;
 }
 
 .card-title {
   font-size: 14px;
   margin: 0;
+  flex-grow: 1;
 }
 
 .card-subtitle {
@@ -105,14 +110,11 @@ a {
   margin: 5px 0 0;
 }
 
-.job-logo {
-  width: 40px;
-  height: 43px;
-}
-
 .card-head {
   margin-top: 3px;
   margin-left: 10px;
+  height: 36px;
+  width: 100%;
 }
 
 @media only screen and (min-width: 1006px) {
@@ -122,4 +124,33 @@ a {
   .second-row {
     width: calc((100% - 660px) / 2);
   }
+}
+
+.card-info {
+  text-align: center;
+  font-size: 14px;
+  margin-top: auto;
+ }
+
+.btn-info {
+  width: 100px;
+  height: 25px;
+  border-radius: 3px 15px 3px 3px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.angular-logo {
+  width: 40px;
+  height: 43px;
+  margin-left: 30px;
+}
+
+.react-logo {
+  width: 60px;
+}
+
+.python-logo {
+  width: 35px;
+  margin-left: 30px;
 }
