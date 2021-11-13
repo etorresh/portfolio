@@ -92,7 +92,7 @@ a {
 .card-padding {
   width: 300px;
   height: 176px;
-  padding: 15px;
+  padding: 10px 15px 20px;
   box-sizing: border-box;
   display: flex;
   flex-flow: column;
@@ -176,6 +176,18 @@ a {
 
 .app-description {
   text-align: center;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.markov-logo {
+  height: 45px;
+  width: 128px;
+  align-self: center;
+}
+
+.app-tech {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
