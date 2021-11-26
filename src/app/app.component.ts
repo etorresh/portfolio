@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {Carousel} from "./models/Carousel";
 
@@ -23,7 +23,10 @@ import {Carousel} from "./models/Carousel";
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = "Emilio Torres";
   public carousel = new Carousel(['assets/myFace/myFace1.jpg', 'assets/myFace/myFace2.png', 'assets/myFace/myFace3.jpg', 'assets/myFace/myFace4.png']);
+  ngOnInit() {
+    // console.log(document.body.clientHeight);
+  }
 }

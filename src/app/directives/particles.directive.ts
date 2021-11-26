@@ -176,6 +176,7 @@ export class ParticlesDirective implements OnDestroy, OnInit {
   }
 
   setCanvasSize() {
+    console.log(window.body);
     canvas.height = canvas.offsetHeight;
     canvas.width = canvas.offsetWidth;
     if (this.densityArea) this.scaleDensity();

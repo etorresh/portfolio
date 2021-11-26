@@ -1,6 +1,6 @@
 .my-faces {
-  margin-top: 150px;
-  /*margin-top: 250px;*/
+  padding-top: 150px;
+  /*margin-top: 150px;*/
   position: relative;
 }
 
@@ -201,10 +201,15 @@ a {
 
 .particles {
   background-color: #2472a3;
-  z-index: -1;
   position: absolute;
   width: 100vw;
-  height: calc(100% + 150px);
-  margin-top: -150px;
-  margin-left: -8px;
+  height: 100vh;
+  margin-left: -25px;
+  margin-top: -8px;
+}
+
+.particles-wrap {
+  position: sticky;
+  top: 0;
+  z-index: -1;
 }
