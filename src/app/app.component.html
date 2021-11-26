@@ -1,3 +1,6 @@
+<div class="particles">
+  <canvas repulse-particles particleHex="#FFF" [bounce]="false" [size]="100" [number]="200" linkHex="#FFF" [speed]="6" [densityArea]="800" [repulseDistance]="300"></canvas>
+</div>
 <div class="my-faces">
   <img *ngFor="let image of carousel.images; index as i" src="{{image.src}}" alt="Emilio Torres' face" (click)="carousel.nextImage()"
   class="my-face" [@nextFace]="this.carousel.images[i].show ? 'show' : 'hide'" [ngClass]="{'restart-face' : carousel.restartFace && i == 0}">

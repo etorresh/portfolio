@@ -24,5 +24,6 @@ import {Carousel} from "./models/Carousel";
   ]
 })
 export class AppComponent {
+  title = "Emilio Torres";
   public carousel = new Carousel(['assets/myFace/myFace1.jpg', 'assets/myFace/myFace2.png', 'assets/myFace/myFace3.jpg', 'assets/myFace/myFace4.png']);
 }
