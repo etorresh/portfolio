@@ -8,7 +8,6 @@ import { Directive, ElementRef, Input, OnDestroy, HostListener, OnInit } from "@
 const TAU: number = Math.PI * 2;
 const QUADTREE_CAPACITY: number = 4;
 let linkBatches: number = 10;
-let mouse: {x: number,y: number} = {x: 0, y: 0};
 
 
 /*
@@ -41,6 +40,8 @@ export class ParticlesDirective implements OnDestroy, OnInit {
   @Input() linkHex: string = "#FFF";
   @Input() bounce: boolean = true;
   @Input() densityArea: number = 800;
+  @Input() x: number = 0;
+  @Input() y:number = 0;
 
 
   particlesNumber: number;
@@ -50,6 +51,8 @@ export class ParticlesDirective implements OnDestroy, OnInit {
   linkPool: Link[] = [];
   candidates: Particle[] = [];
   boundary: Bounds;
+
+  valuesInitialized = true;
 
   animationFrame;
 
@@ -76,34 +79,12 @@ export class ParticlesDirective implements OnDestroy, OnInit {
     this.setCanvasSize();
   }
 
-  @HostListener("mouseleave") onMouseLeave() {
-    this.stopMouse()
-  }
-
-  @HostListener("touchend") onTouchEnd() {
-    this.stopMouse()
-  }
-
-  @HostListener("mousemove", ["$event"]) onMouseMove(e) {
-    this.setMousePos(e.offsetX, e.offsetY);
-  }
-
-  @HostListener("touchmove", ["$event"]) onTouchMove(e) {
-    this.setMousePos(e.touches[0].clientX, e.touches[0].clientY);
-  }
-
   @HostListener("change") ngOnChanges() {
     this.initVariables();
-    this.resetParticles();
-  }
-
-  setMousePos(x, y) {
-    mouse.x = x;
-    mouse.y = y;
-  }
-
-  stopMouse() {
-    mouse.x = null;
+    if(this.valuesInitialized) {
+      this.resetParticles();
+    }
+    this.valuesInitialized = false;
   }
 
   initVariables() {
@@ -128,7 +109,7 @@ export class ParticlesDirective implements OnDestroy, OnInit {
     quadTree.close();
     ctx.fillStyle = this.particleHex;
     ctx.beginPath();
-    for (const p of this.particlesList) p.update(ctx, true);
+    for (const p of this.particlesList) p.update(ctx, true, this.x, this.y);
     ctx.fill();
   }
 
@@ -176,7 +157,6 @@ export class ParticlesDirective implements OnDestroy, OnInit {
   }
 
   setCanvasSize() {
-    console.log(window.body);
     canvas.height = canvas.offsetHeight;
     canvas.width = canvas.offsetWidth;
     if (this.densityArea) this.scaleDensity();
@@ -254,8 +234,9 @@ class Particle {
     if (xd <= w || yd <= h) { return true }
     return  ((xd - w) ** 2 + (yd - h) ** 2) <= linkDistance2;
 
+
   }
-  update(ctx, repulse = true) {
+  update(ctx, repulse = true, mousex: number, mousey: number) {
     this.explored = false;
     const r = this.r;
     let W, H;
@@ -289,14 +270,14 @@ class Particle {
         this.x = Math.random() * (W - r);
       }
     }
-    repulse && mouse.x && this.repulse();
+    repulse && mousex && this.repulse(mousex, mousey);
     this.addPath(ctx);
     quadTree.insert(this);
     this.quad && (this.quad.drawn = false)
   }
-  repulse() {
-    var dx = this.x - mouse.x;
-    var dy = this.y - mouse.y;
+  repulse(mousex: number, mousey: number) {
+    var dx = this.x - mousex;
+    var dy = this.y - mousey;
 
     const dist = (dx * dx + dy * dy) ** 0.5;
     var rf = ((1 - (dist / repulseDistance) ** 2)  * 100);

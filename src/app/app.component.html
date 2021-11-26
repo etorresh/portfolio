@@ -1,6 +1,7 @@
 <div class="particles-wrap">
   <div class="particles">
-    <canvas repulse-particles particleHex="#FFF" [bounce]="false" [size]="100" [number]="200" linkHex="#FFF" [speed]="6" [densityArea]="800" [repulseDistance]="300"></canvas>
+    <canvas repulse-particles particleHex="#FFF" [bounce]="false" [size]="100" [number]="200" linkHex="#FFF" [speed]="6"
+            [x]="x" [y]="y + scrollYOffset" [densityArea]="800" [repulseDistance]="repulseDistance"></canvas>
   </div>
 </div>
 <div class="my-faces">
@@ -31,7 +32,7 @@
 </div>
 <div class="card-container">
   <div class="first-row"></div>
-  <div class="card">
+  <div class="card" #card1 (mouseenter) ="onCardHover($event, 1)" (mouseleave)="onCardLeave()">
     <div class="card-padding">
       <div class="card-top">
         <img class="angular-logo" src="assets/cardsImages/angular.png" alt="Angular logo">
