@@ -47,7 +47,7 @@
       </div>
     </div>
   </div>
-  <div class="card">
+  <div class="card" #card2 (mouseenter) ="onCardHover($event, 2)" (mouseleave) = "onCardLeave()">
     <div class="card-padding">
       <div class="card-top">
         <img class="react-logo" src="assets/cardsImages/React-icon.svg" alt="React logo">
@@ -62,7 +62,7 @@
       </div>
     </div>
   </div>
-  <div class="card">
+  <div class="card" #card3 (mouseenter) ="onCardHover($event, 3)" (mouseleave) = "onCardLeave()">
     <div class="card-padding">
       <div class="card-top">
         <img class="python-logo" src="assets/cardsImages/python.png" alt="Python logo">
@@ -79,7 +79,7 @@
   </div>
   <div class="first-row"></div>
   <div class="second-row"></div>
-  <div class="card">
+  <div class="card" #card4 (mouseenter) = "onCardHover($event, 4)" (mouseleave) = "onCardLeave()">
     <div class="card-padding">
       <img class="galaxer-logo" src="assets/cardsImages/galaxer-icon.jpg" alt="Galaxer logo">
       <div class="card-info">
@@ -94,7 +94,7 @@
       </div>
     </div>
   </div>
-  <div class="card">
+  <div class="card" #card5 (mouseenter) = "onCardHover($event, 5)" (mouseleave)="onCardLeave()">
     <div class="card-padding">
       <img class="markov-logo" src="assets/cardsImages/markov-icon.png" alt="MarkovTweets logo">
       <div class="card-info">
@@ -107,7 +107,7 @@
     </div>
   </div>
   <div class="second-row"></div>
-  <div class="card" style="margin-bottom: 0">
+  <div class="card" #card6 (mouseenter) = "onCardHover($event, 6)" (mouseleave)="onCardLeave()" style="margin-bottom: 0">
     <div class="card-padding">
       <img class="galaxer-logo" src="assets/cardsImages/tag-icon.jpg" alt="Tag logo">
       <div class="card-info">
