@@ -25,11 +25,16 @@ import {Carousel} from "./models/Carousel";
 })
 export class AppComponent {
   title = "Emilio Torres";
-  repulseDistance = 0;
+  repulseDistance = 300;
   x = 0;
   y = 0;
   scrollYOffset = 0;
   public carousel = new Carousel(['assets/myFace/myFace1.jpg', 'assets/myFace/myFace2.png', 'assets/myFace/myFace3.jpg', 'assets/myFace/myFace4.png']);
+  private repulseTimer: any;
+  public repulseScale = 0;
+  public speedScale = 1;
+  public whiteBackground = true;
+
   @ViewChild('card1') card1 : ElementRef | undefined;
   @ViewChild('card2') card2: ElementRef | undefined;
   @ViewChild('card3') card3: ElementRef | undefined;
@@ -43,6 +48,8 @@ export class AppComponent {
   }
 
   onCardHover(event: MouseEvent, cardId: number) {
+    clearInterval(this.repulseTimer);
+    // change repulse position depending on card hovered
     switch (cardId) {
       case 1: {
         this.x = this.card1?.nativeElement.offsetLeft + 165;
@@ -75,9 +82,30 @@ export class AppComponent {
         break;
       }
     }
-    this.repulseDistance = 300;
+    this.whiteBackground = false;
+    this.repulseTimer = setInterval(() => {
+      if(this.repulseScale < 1) {
+        this.repulseScale += 0.02;
+      } else {
+        this.speedScale = 0;
+        clearInterval(this.repulseTimer);
+      }
+    }, 10);
   }
+
+
   onCardLeave() {
-    this.repulseDistance = 0;
+    clearInterval(this.repulseTimer);
+    console.log(this.repulseScale);
+    this.speedScale = 1;
+    this.repulseTimer = setInterval(() => {
+      if (this.repulseScale > 0) {
+        this.repulseScale -= 0.01;
+      }
+      else {
+        this.whiteBackground = true;
+        clearInterval(this.repulseTimer);
+      }
+    }, 30);
   }
 }

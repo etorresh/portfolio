@@ -22,6 +22,7 @@ let bounce: boolean;
 let quadTree: QuadTree;
 let canvas: HTMLCanvasElement;
 let ctx: CanvasRenderingContext2D;
+let speedScale: number;
 
 
 
@@ -50,7 +51,6 @@ export class ParticlesDirective implements OnDestroy, OnInit {
   linkBatchAlphas: number[] = [];
   linkPool: Link[] = [];
   candidates: Particle[] = [];
-  boundary: Bounds;
 
   valuesInitialized = true;
 
@@ -92,6 +92,7 @@ export class ParticlesDirective implements OnDestroy, OnInit {
     linkDistance2 = (0.7 * linkDistance) ** 2;
     repulseDistance = this.repulseDistance;
     particleSpeed = this.speed;
+    speedScale = particleSpeed / 2;
     particleSize = this.size;
     bounce = this.bounce;
     if (this.densityArea) this.scaleDensity();
@@ -194,7 +195,6 @@ class Link {
 
 class Particle {
   r: number;
-  speedScale: number;
   x: number;
   y: number;
   vx: number;
@@ -203,7 +203,6 @@ class Particle {
   explored: boolean;
   constructor (canvas, r) {
     this.r = r;
-    this.speedScale = particleSpeed / 2;
     this.reset(canvas, r);
   }
   reset(canvas, r = this.r) {
@@ -240,8 +239,8 @@ class Particle {
     this.explored = false;
     const r = this.r;
     let W, H;
-    this.x += this.vx * this.speedScale;
-    this.y += this.vy * this.speedScale;
+    this.x += this.vx * speedScale;
+    this.y += this.vy * speedScale;
 
     if (bounce) {
       W = ctx.canvas.width - r;
