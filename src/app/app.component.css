@@ -214,14 +214,11 @@ a {
   width: 100vw;
   height: 100vh;
   z-index: -1;
+  background-color: white;
 }
 
 .fixed-top {
   position: sticky;
   top: 0;
   z-index: -99;
-}
-
-.whiteIn {
-  background-color: rgba(255, 255, 255, 1);
 }

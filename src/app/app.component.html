@@ -3,8 +3,7 @@
     <canvas repulse-particles particleHex="#FFF" [bounce]="false" [size]="100" [number]="200" linkHex="#FFF" [speed]="6 * this.speedScale"
             [x]="x" [y]="y + scrollYOffset" [densityArea]="800" [repulseDistance]="this.repulseDistance * this.repulseScale"></canvas>
   </div>
-<!--  noinspection-->
-  <div class="particles-cover" style="background-color: rgba(255, 255, 255, {{opacityScale}}"></div>
+  <div class="particles-cover" [ngStyle]="{opacity: opacityScale}"></div>
 </div>
 <div class="my-faces">
   <img *ngFor="let image of carousel.images; index as i" src="{{image.src}}" alt="Emilio Torres' face" (click)="carousel.nextImage()"
