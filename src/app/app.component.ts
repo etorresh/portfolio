@@ -34,6 +34,7 @@ export class AppComponent {
   public repulseScale = 0;
   public speedScale = 1;
   public whiteBackground = true;
+  public opacityScale = 1;
 
   @ViewChild('card1') card1 : ElementRef | undefined;
   @ViewChild('card2') card2: ElementRef | undefined;
@@ -86,6 +87,7 @@ export class AppComponent {
     this.repulseTimer = setInterval(() => {
       if(this.repulseScale < 1) {
         this.repulseScale += 0.02;
+        this.opacityScale -= 0.02;
       } else {
         this.speedScale = 0;
         clearInterval(this.repulseTimer);
@@ -101,6 +103,7 @@ export class AppComponent {
     this.repulseTimer = setInterval(() => {
       if (this.repulseScale > 0) {
         this.repulseScale -= 0.01;
+        this.opacityScale += 0.01;
       }
       else {
         this.whiteBackground = true;
