@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {Carousel} from "./models/Carousel";
 
@@ -23,7 +23,7 @@ import {Carousel} from "./models/Carousel";
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = "Emilio Torres";
   repulseDistance = 300;
   x = 0;
@@ -42,6 +42,10 @@ export class AppComponent {
   @ViewChild('card4') card4 : ElementRef | undefined;
   @ViewChild('card5') card5: ElementRef | undefined;
   @ViewChild('card6') card6: ElementRef | undefined;
+
+  ngOnInit() {
+    console.log('%c Hello! \n Thank you for visiting my portfolio.\n There\'s nothing else to see in the console, but I\'m glad you checked.\n Oh! Before you go, I also want to let you know that I\'m looking for new opportunities. Feel free to reach out! \n Have a great day!', 'background: #222; color: #bada55');
+  }
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
@@ -98,7 +102,6 @@ export class AppComponent {
 
   onCardLeave() {
     clearInterval(this.repulseTimer);
-    console.log(this.repulseScale);
     this.speedScale = 1;
     this.repulseTimer = setInterval(() => {
       if (this.repulseScale > 0) {
