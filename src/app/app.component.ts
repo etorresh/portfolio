@@ -1,6 +1,7 @@
 import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {Carousel} from "./models/Carousel";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,6 @@ export class AppComponent implements OnInit {
   public repulseScale = 0;
   public speedScale = 1;
   public whiteBackground = true;
-  public opacityScale = 1;
 
   @ViewChild('card1') card1 : ElementRef | undefined;
   @ViewChild('card2') card2: ElementRef | undefined;
@@ -54,7 +54,6 @@ export class AppComponent implements OnInit {
 
   onCardHover(event: MouseEvent, cardId: number) {
     clearInterval(this.repulseTimer);
-    // change repulse position depending on card hovered
     switch (cardId) {
       case 1: {
         this.x = this.card1?.nativeElement.offsetLeft + 165;
@@ -91,7 +90,6 @@ export class AppComponent implements OnInit {
     this.repulseTimer = setInterval(() => {
       if(this.repulseScale < 1) {
         this.repulseScale += 0.02;
-        this.opacityScale -= 0.02;
       } else {
         this.speedScale = 0;
         clearInterval(this.repulseTimer);
@@ -99,19 +97,45 @@ export class AppComponent implements OnInit {
     }, 10);
   }
 
-
   onCardLeave() {
     clearInterval(this.repulseTimer);
     this.speedScale = 1;
     this.repulseTimer = setInterval(() => {
       if (this.repulseScale > 0) {
         this.repulseScale -= 0.01;
-        this.opacityScale += 0.01;
       }
       else {
         this.whiteBackground = true;
         clearInterval(this.repulseTimer);
       }
     }, 30);
+  }
+
+  swalTravelpal() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong!',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+  }
+
+
+  swalScubaCode() {
+
+  }
+
+  swalRocSystems() {
+    Swal.fire({
+      title: 'Intern Software Developer',
+      confirmButtonColor: '#2472a3',
+      html: '<div style="text-align: left">' +
+        'During highschool, I interned at RocSystems. ' +
+        '<ul>' +
+        '<li>test</li>' +
+        '<li>test2</li>' +
+        '</ul>' +
+        '</div>',
+    })
   }
 }

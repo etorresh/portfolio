@@ -3,7 +3,7 @@
     <canvas repulse-particles particleHex="#FFF" [bounce]="false" [size]="100" [number]="200" linkHex="#FFF" [speed]="6 * this.speedScale"
             [x]="x" [y]="y + scrollYOffset" [densityArea]="800" [repulseDistance]="this.repulseDistance * this.repulseScale"></canvas>
   </div>
-  <div class="particles-cover fixed-child" [ngStyle]="{opacity: opacityScale}"></div>
+  <div class="particles-cover fixed-child" [ngStyle]="{opacity: (1 - repulseScale)}"></div>
 </div>
 <div class="my-faces">
   <img *ngFor="let image of carousel.images; index as i" src="{{image.src}}" alt="Emilio Torres' face" (click)="carousel.nextImage()"
@@ -44,7 +44,7 @@
       </div>
       <div class="card-info">
         <p style="text-align: center"><strong>Technologies:</strong> Angular, .NET, and PostgreSQL.</p>
-        <button class="btn-info">More Info</button>
+        <button (click)="swalTravelpal()" class="btn-info">More Info</button>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
       </div>
       <div class="card-info">
         <p style="text-align: center"><strong>Technologies:</strong> React, .NET, PostgreSQL, Typescript, C#, and SQL Server.</p>
-        <button class="btn-info">More Info</button>
+        <button (click)="swalScubaCode()" class="btn-info">More Info</button>
       </div>
     </div>
   </div>
@@ -74,7 +74,7 @@
       </div>
       <div class="card-info">
         <p style="text-align: center"><strong>Technologies:</strong> Python, PHP, jQuery, JavaScript, and RaspberryPi.</p>
-        <button class="btn-info">More Info</button>
+        <button (click)="swalRocSystems()" class="btn-info">More Info</button>
       </div>
     </div>
   </div>
