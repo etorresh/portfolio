@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   x = 0;
   y = 0;
   scrollYOffset = 0;
-  public carousel = new Carousel(['assets/myFace/myFace1.jpg', 'assets/myFace/myFace2.png', 'assets/myFace/myFace3.jpg', 'assets/myFace/myFace4.png']);
+  public carousel = new Carousel(['assets/myFace/myFace1.webp', 'assets/myFace/myFace2.webp', 'assets/myFace/myFace3.webp', 'assets/myFace/myFace4.webp']);
   private repulseTimer: any;
   public repulseScale = 0;
   public speedScale = 1;
