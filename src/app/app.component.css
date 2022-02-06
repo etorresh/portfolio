@@ -214,6 +214,7 @@ a {
 .fixed-child {
   position: absolute;
   width: 100vw;
+  max-width: 100%;
   height: 100vh;
 }
 
@@ -225,4 +226,8 @@ a {
 .particles-cover {
   z-index: -1;
   background-color: white;
+}
+
+.last-card {
+  margin-bottom: 15px;
 }
