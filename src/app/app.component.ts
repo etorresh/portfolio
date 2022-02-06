@@ -113,16 +113,37 @@ export class AppComponent implements OnInit {
 
   swalTravelpal() {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Something went wrong!',
-      footer: '<a href="">Why do I have this issue?</a>'
+      title: 'Full Stack Developer',
+      confirmButtonColor: '#2472a3',
+      html: '<div style="text-align: left">' +
+        'Our main task was to develop a web app MVP for hotel guests to book a room, view room layouts, ' +
+        'reserve hotel activities, order room service, and interact with a hotel map.' +
+        '<ul>' +
+        '<li>Wrote and styled the Angular components to meet the requirements of our mocks.</li>' +
+        '<li>Worked alongside another developer to create an API using .NET Core Web API.</li>' +
+        '<li>Implemented the API endpoints to the front-end.</li>' +
+        '<li>Built extensive test coverage for all new and old features.</li>' +
+        '</ul>' +
+        '</div>',
     })
   }
 
 
   swalScubaCode() {
-
+    Swal.fire({
+      title: 'Full Stack Developer',
+      confirmButtonColor: '#2472a3',
+      html: '<div style="text-align: left">' +
+        'During high school, I interned at RocSystems. I was able to work on a variety of different projects and learn from a great team. ' +
+        'My main tasks involved web development using PHP and jQuery, and Python using a Raspberry Pi.' +
+        '<ul>' +
+        '<li>Created UI with React for an internal web app that managed venues, automated sales reports and controlled inventory.</li>' +
+        '<li>Developed backend services using ASP.NET Web API, EFcore, and PostgreSQL.</li>' +
+        '<li>Automated the deployment of servers changes using Python.</li>' +
+        '<li>Worked on automating deployment validation scripts which reduced manual effort in deployments.</li>' +
+        '</ul>' +
+        '</div>',
+    })
   }
 
   swalRocSystems() {
