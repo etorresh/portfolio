@@ -131,11 +131,11 @@ export class AppComponent implements OnInit {
 
   swalScubaCode() {
     Swal.fire({
-      title: 'Full Stack Developer',
+      title: 'Intern Full Stack Developer',
       confirmButtonColor: '#2472a3',
       html: '<div style="text-align: left">' +
-        'During high school, I interned at RocSystems. I was able to work on a variety of different projects and learn from a great team. ' +
-        'My main tasks involved web development using PHP and jQuery, and Python using a Raspberry Pi.' +
+        'During my last year of high school in 2019 until my first semester of university December 2020, I interned at ScubaCode.' +
+        'My tasks were to add features to an existing ERP. ' +
         '<ul>' +
         '<li>Created UI with React for an internal web app that managed venues, automated sales reports and controlled inventory.</li>' +
         '<li>Developed backend services using ASP.NET Web API, EFcore, and PostgreSQL.</li>' +
