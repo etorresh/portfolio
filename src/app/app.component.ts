@@ -154,7 +154,7 @@ export class AppComponent implements OnInit {
         'During high school, I interned at RocSystems. I was able to work on a variety of different projects and learn from a great team. ' +
         'My main tasks involved web development using PHP and jQuery, and Python using a Raspberry Pi.' +
         '<ul>' +
-        '<li>Added back-end and front-end features to a web applicatin using PHP and jQuery.</li>' +
+        '<li>Added back-end and front-end features to a web application using PHP and jQuery.</li>' +
         '<li>Developed an automated sales report system using PHP.</li>' +
         '<li>Automated the deployment of servers changes using Python.</li>' +
         '<li>Decreased user wait time by introducing multithreading to the existing software using Python.</li>' +
