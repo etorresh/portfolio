@@ -9,7 +9,9 @@
   <img *ngFor="let image of carousel.images; index as i" src="{{image.src}}" alt="Emilio Torres' face" (click)="carousel.nextImage()"
   class="my-face" [@nextFace]="this.carousel.images[i].show ? 'show' : 'hide'" [ngClass]="{'restart-face' : carousel.restartFace && i == 0}">
 </div>
-<h1 class="my-name">Emilio Torres</h1>
+<h1 class="my-name">
+  <span *ngFor="let char of 'Emilio Torres'.split(''); index as i;" (click)="changeColor(i)" [@nextColor]="this.lettersColor[i]">{{char}}</span>
+</h1>
 <div class="info">
   <div class="box-logo" style="margin-right: 18px">
     <a class="link-logo" href="https://github.com/etorresh" target="_blank" rel="noopener">
