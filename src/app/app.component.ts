@@ -134,7 +134,7 @@ export class AppComponent implements OnInit {
       title: 'Intern Full Stack Developer',
       confirmButtonColor: '#2472a3',
       html: '<div style="text-align: left">' +
-        'During my last year of high school in 2019 until my first semester of university December 2020, I interned at ScubaCode.' +
+        'During my last year of high school in 2019 until my first semester of university December 2020, I interned at ScubaCode. ' +
         'My tasks were to add features to an existing ERP. ' +
         '<ul>' +
         '<li>Created UI with React for an internal web app that managed venues, automated sales reports and controlled inventory.</li>' +

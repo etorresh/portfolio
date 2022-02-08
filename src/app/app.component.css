@@ -1,7 +1,8 @@
 .my-faces {
   padding-top: 150px;
-  /*margin-top: 150px;*/
   position: relative;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .my-face {
