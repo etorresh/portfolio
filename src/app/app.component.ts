@@ -82,32 +82,32 @@ export class AppComponent implements OnInit {
     clearInterval(this.repulseTimer);
     switch (cardId) {
       case 1: {
-        this.x = this.card1?.nativeElement.offsetLeft + 165;
+        this.x = this.card1?.nativeElement.offsetLeft + 150;
         this.y = this.card1?.nativeElement.offsetTop + 88;
         break;
       }
       case 2: {
-        this.x = this.card2?.nativeElement.offsetLeft + 165;
+        this.x = this.card2?.nativeElement.offsetLeft + 150;
         this.y = this.card2?.nativeElement.offsetTop + 88;
         break;
       }
       case 3: {
-        this.x = this.card3?.nativeElement.offsetLeft + 165;
+        this.x = this.card3?.nativeElement.offsetLeft + 150;
         this.y = this.card3?.nativeElement.offsetTop + 88;
         break;
       }
       case 4: {
-        this.x = this.card4?.nativeElement.offsetLeft + 165;
+        this.x = this.card4?.nativeElement.offsetLeft + 150;
         this.y = this.card4?.nativeElement.offsetTop + 88;
         break;
       }
       case 5: {
-        this.x = this.card5?.nativeElement.offsetLeft + 165;
+        this.x = this.card5?.nativeElement.offsetLeft + 150;
         this.y = this.card5?.nativeElement.offsetTop + 88;
         break;
       }
       case 6: {
-        this.x = this.card6?.nativeElement.offsetLeft + 165;
+        this.x = this.card6?.nativeElement.offsetLeft + 150;
         this.y = this.card6?.nativeElement.offsetTop + 88;
         break;
       }
