@@ -190,7 +190,6 @@ export class AppComponent implements OnInit {
   }
 
   public changeColor(charId : number, infect = true) {
-    console.log(charId);
     if (this.lettersColor[charId] == 4) {
       this.lettersColor[charId] = 0;
     } else{
