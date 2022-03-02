@@ -6,7 +6,7 @@
   <div class="particles-cover fixed-child" [ngStyle]="{opacity: (1 - repulseScale)}"></div>
 </div>
 <div class="my-faces">
-  <img *ngFor="let image of carousel.images; index as i" src="{{image.src}}" alt="Emilio Torres' face" (click)="carousel.nextImage()"
+  <img *ngFor="let image of carousel.images; index as i" src="{{image.src}}" alt="Emilio Torres face" (click)="carousel.nextImage()"
   class="my-face" [@nextFace]="this.carousel.images[i].show ? 'show' : 'hide'" [ngClass]="{'restart-face' : carousel.restartFace && i == 0}">
 </div>
 <h1 class="my-name">
@@ -15,17 +15,17 @@
 <div class="info">
   <div class="box-logo" style="margin-right: 18px">
     <a class="link-logo" href="https://github.com/etorresh" target="_blank" rel="noopener">
-      <img class="info-logo" src="assets/info/github.svg" alt="Github profile link">
+      <img class="info-logo" src="assets/info/github.svg" alt="Emilio Torres Github profile link">
     </a>
   </div>
   <div class="box-logo">
     <a class="link-logo" href="assets/docs/EmilioTorresCV.pdf" target="_blank" download rel>
-      <img class="info-logo" src="assets/info/curriculum__profile__resume.svg" alt="Download CV">
+      <img class="info-logo" src="assets/info/curriculum__profile__resume.svg" alt="Download Emilio Torres CV">
     </a>
   </div>
   <div class="box-logo" style="margin-left: 18px">
     <a class="link-logo" href="https://www.linkedin.com/in/etorresh/" target="_blank" rel="noopener">
-      <img class="info-logo" src="assets/info/fi-xnsuxl-linkedin.svg" alt="LinkedIn profile link">
+      <img class="info-logo" src="assets/info/fi-xnsuxl-linkedin.svg" alt="Emilio Torres LinkedIn profile link">
     </a>
   </div>
   <div class="flex-br"></div>
@@ -92,7 +92,7 @@
           <img src="assets/cardsImages/github.svg" class="github-logo" alt="GitHub logo">
         </a>
         <a href="https://play.google.com/store/apps/details?id=com.enodriza.galaxer" target="_blank" rel="noopener">
-          <img src="assets/cardsImages/playstore.svg" class="playstore-logo" alt="Playstore logo">
+          <img src="assets/cardsImages/playstore.svg" class="playstore-logo" alt="Galaxer Playstore link">
         </a>
       </div>
     </div>
@@ -104,7 +104,7 @@
         <p class="app-description">A Twitter bot that creates and uses Markov chains to fill in tweets.</p>
         <p class="app-tech"><strong>Technologies:</strong> Python and TwitterAPI.</p>
         <a href="https://github.com/etorresh/MarkovTweets" target="_blank" rel="noopener">
-          <img src="assets/cardsImages/github.svg" class="github-logo" alt="GitHub logo">
+          <img src="assets/cardsImages/github.svg" class="github-logo" alt="Emilio Torres GitHub MarkovTweets repository">
         </a>
       </div>
     </div>
@@ -117,7 +117,7 @@
         <p class="app-description">A plugin for Minecraft servers that add a game of tag; over 100 downloads.</p>
         <p class="app-tech"><strong>Technologies:</strong> Java and SpigotAPI.</p>
         <a href="https://github.com/etorresh/Galaxer" target="_blank" rel="noopener">
-          <img src="assets/cardsImages/github.svg" class="github-logo" alt="GitHub logo">
+          <img src="assets/cardsImages/github.svg" class="github-logo" alt="Emilio Torres Github Galaxer repository">
         </a>
       </div>
     </div>
