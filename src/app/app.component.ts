@@ -117,7 +117,7 @@ export class AppComponent implements OnInit {
       if(this.repulseScale < 1) {
         this.repulseScale += 0.02;
       } else {
-        this.speedScale = 0;
+        this.speedScale = 0.2;
         clearInterval(this.repulseTimer);
       }
     }, 10);
