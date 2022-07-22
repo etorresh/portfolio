@@ -1,0 +1,235 @@
+.my-faces {
+    padding-top: 150px;
+    position: relative;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .my-face {
+    display: block;
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    margin-left: -62.5px;
+  }
+  
+  .restart-face {
+    z-index: 1;
+  }
+  
+  .my-name {
+    margin-top: 0;
+    padding-top: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .info-logo {
+    width: 25px;
+  }
+  
+  .link-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .box-logo {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    outline-style: solid;
+    outline-width: 1.5px;
+    cursor: pointer;
+    background-color: #FFF;
+  }
+  
+  .box-email {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 156px;
+    height: 40px;
+    outline-style: solid;
+    outline-width: 1.5px;
+    margin-top: 18px;
+    background-color: #FFF;
+  }
+  
+  .flex-br {
+    width: 100%;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .card-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 300px;
+    height: 176px;
+    outline: rgba(0, 0, 0, 0.34) solid 1px;
+    border-radius: 3px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+    background-color: #FFF;
+  }
+  
+  .card-padding {
+    width: 300px;
+    height: 176px;
+    padding: 10px 15px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+  }
+  
+  .card-title {
+    font-size: 14px;
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+  .card-subtitle {
+    font-size: 12px;
+    font-style: italic;
+    margin: 5px 0 0;
+  }
+  
+  .card-head {
+    margin-top: 3px;
+    margin-left: 10px;
+    height: 36px;
+    width: 100%;
+  }
+  
+  @media only screen and (min-width: 1006px) {
+    .first-row {
+      width: calc((100% - 990px) / 2)
+    }
+    .second-row {
+      width: calc((100% - 660px) / 2);
+    }
+  }
+  
+  .card-info {
+    text-align: center;
+    font-size: 14px;
+    margin-top: auto;
+   }
+  
+  .btn-info {
+    width: 100px;
+    height: 25px;
+    border-radius: 3px 15px 3px 3px;
+    cursor: pointer;
+    background: transparent;
+  }
+  
+  .angular-logo {
+    width: 40px;
+    height: 43px;
+  }
+  
+  .react-logo {
+    width: 40px;
+    height: 39px;
+  }
+  
+  .python-logo {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .galaxer-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    align-self: center;
+  }
+  
+  .github-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+  
+  .playstore-logo {
+    width: 30px;
+    height: 28px;
+    margin-right: 15px;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+  
+  .app-description {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .markov-logo {
+    height: 45px;
+    width: 128px;
+    align-self: center;
+  }
+  
+  .app-tech {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .card-top {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  
+  .fixed-top {
+    position: sticky;
+    top: 0;
+    z-index: -99;
+  }
+  
+  .fixed-child {
+    position: absolute;
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+  }
+  
+  .particles {
+    z-index: -2;
+    background-color: #2472a3;
+  }
+  
+  .particles-cover {
+    z-index: -1;
+    background-color: white;
+  }
+  
+  .last-card {
+    margin-bottom: 15px;
+  }
+  
