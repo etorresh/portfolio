@@ -1,5 +1,12 @@
 // @ts-nocheck
-import { Directive, ElementRef, Input, OnDestroy, HostListener, OnInit } from "@angular/core";
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnDestroy,
+  HostListener,
+  OnInit,
+} from '@angular/core';
 
 /*
   Variables to be used outside of directive scope
@@ -8,7 +15,6 @@ import { Directive, ElementRef, Input, OnDestroy, HostListener, OnInit } from "@
 const TAU: number = Math.PI * 2;
 const QUADTREE_CAPACITY: number = 4;
 let linkBatches: number = 10;
-
 
 /*
   Variables to be initiated
@@ -24,26 +30,22 @@ let canvas: HTMLCanvasElement;
 let ctx: CanvasRenderingContext2D;
 let speedScale: number;
 
-
-
 @Directive({
-  selector: "[repulse-particles]"
+  selector: '[repulse-particles]',
 })
 export class ParticlesDirective implements OnDestroy, OnInit {
-
   @Input() number: number = 80;
   @Input() speed: number = 6;
-  @Input() linkWidth: number = .5;
+  @Input() linkWidth: number = 0.5;
   @Input() linkDistance: number = 140;
   @Input() size: number = 3;
   @Input() repulseDistance: number = 140;
-  @Input() particleHex: string = "#FFF";
-  @Input() linkHex: string = "#FFF";
+  @Input() particleHex: string = '#FFF';
+  @Input() linkHex: string = '#FFF';
   @Input() bounce: boolean = true;
   @Input() densityArea: number = 800;
   @Input() x: number = 0;
-  @Input() y:number = 0;
-
+  @Input() y: number = 0;
 
   particlesNumber: number;
   particlesList: Particle[] = [];
@@ -56,32 +58,30 @@ export class ParticlesDirective implements OnDestroy, OnInit {
 
   animationFrame;
 
-  constructor(
-    public el: ElementRef,
-  ) {
+  constructor(public el: ElementRef) {
     canvas = this.el.nativeElement;
-    canvas.style.height = "100%";
-    canvas.style.width = "100%";
-    ctx = canvas.getContext("2d");
-    for (var i = 1/(linkBatches + 1); i < 1; i += 1/(linkBatches + 1)) {
+    canvas.style.height = '100%';
+    canvas.style.width = '100%';
+    ctx = canvas.getContext('2d');
+    for (var i = 1 / (linkBatches + 1); i < 1; i += 1 / (linkBatches + 1)) {
       this.links.push([]);
       this.linkBatchAlphas.push(i);
     }
-    this.setCanvasSize();
     this.initVariables();
   }
 
   ngOnInit() {
     this.animate();
-  }
-
-  @HostListener("window:resize") onResize() {
     this.setCanvasSize();
   }
 
-  @HostListener("change") ngOnChanges() {
+  @HostListener('window:resize') onResize() {
+    this.setCanvasSize();
+  }
+
+  @HostListener('change') ngOnChanges() {
     this.initVariables();
-    if(this.valuesInitialized) {
+    if (this.valuesInitialized) {
       this.resetParticles();
     }
     this.valuesInitialized = false;
@@ -97,7 +97,6 @@ export class ParticlesDirective implements OnDestroy, OnInit {
     bounce = this.bounce;
     if (this.densityArea) this.scaleDensity();
   }
-
 
   animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -146,15 +145,15 @@ export class ParticlesDirective implements OnDestroy, OnInit {
   resetParticles() {
     this.particlesList = [];
     for (let i = 0; i < this.particlesNumber; i++) {
-      this.particlesList.push(new Particle(canvas, particleSize))
+      this.particlesList.push(new Particle(canvas, particleSize));
     }
     quadTree = new QuadTree();
     for (const p of this.particlesList) p.reset(canvas);
   }
 
   scaleDensity() {
-    var area = canvas.width * canvas.height / 1000;
-    this.particlesNumber = (area * this.number / this.densityArea) | 0;
+    var area = (canvas.width * canvas.height) / 1000;
+    this.particlesNumber = ((area * this.number) / this.densityArea) | 0;
   }
 
   setCanvasSize() {
@@ -174,14 +173,14 @@ class Link {
   p2: Particle;
   alpha: number;
   batchId: number;
-  constructor() {  }
+  constructor() {}
   init(p1: Particle, p2: Particle) {
     this.p1 = p1;
     this.p2 = p2;
     const dx = p1.x - p2.x;
     const dy = p1.y - p2.y;
     this.alpha = 1 - (dx * dx + dy * dy) / linkDistance2;
-    this.batchId = this.alpha * linkBatches | 0;
+    this.batchId = (this.alpha * linkBatches) | 0;
     this.batchId = this.batchId >= linkBatches ? linkBatches : this.batchId;
   }
   addPath(ctx) {
@@ -189,9 +188,7 @@ class Link {
     ctx.lineTo(this.p2.x, this.p2.y);
     return this;
   }
-
 }
-
 
 class Particle {
   r: number;
@@ -201,7 +198,7 @@ class Particle {
   vy: number;
   quad: QuadTree;
   explored: boolean;
-  constructor (canvas, r) {
+  constructor(canvas, r) {
     this.r = r;
     this.reset(canvas, r);
   }
@@ -214,14 +211,13 @@ class Particle {
     this.vy = Math.random() - 0.5;
     this.quad = undefined;
     this.explored = false;
-
   }
   addPath(ctx) {
-    ctx.moveTo(this.x + this.r,  this.y);
-    ctx.arc(this.x,  this.y, this.r, 0, TAU);
+    ctx.moveTo(this.x + this.r, this.y);
+    ctx.arc(this.x, this.y, this.r, 0, TAU);
   }
   near(p) {
-    return ((p.x - this.x) ** 2 + (p.y - this.y) ** 2) <= linkDistance2;
+    return (p.x - this.x) ** 2 + (p.y - this.y) ** 2 <= linkDistance2;
   }
   intersects(range) {
     const xd = Math.abs(range.x - this.x);
@@ -229,11 +225,13 @@ class Particle {
     const r = linkDistance;
     const w = range.w;
     const h = range.h;
-    if (xd > r + w || yd > r + h) { return false }
-    if (xd <= w || yd <= h) { return true }
-    return  ((xd - w) ** 2 + (yd - h) ** 2) <= linkDistance2;
-
-
+    if (xd > r + w || yd > r + h) {
+      return false;
+    }
+    if (xd <= w || yd <= h) {
+      return true;
+    }
+    return (xd - w) ** 2 + (yd - h) ** 2 <= linkDistance2;
   }
   update(ctx, repulse = true, mousex: number, mousey: number) {
     this.explored = false;
@@ -262,7 +260,7 @@ class Particle {
         this.y = Math.random() * (H - r);
       }
       if (this.y > H) {
-        this.y = 0
+        this.y = 0;
         this.x = Math.random() * (W - r);
       } else if (this.y < -r) {
         this.y = H - r;
@@ -272,22 +270,24 @@ class Particle {
     repulse && mousex && this.repulse(mousex, mousey);
     this.addPath(ctx);
     quadTree.insert(this);
-    this.quad && (this.quad.drawn = false)
+    this.quad && (this.quad.drawn = false);
   }
   repulse(mousex: number, mousey: number) {
     var dx = this.x - mousex;
     var dy = this.y - mousey;
 
     const dist = (dx * dx + dy * dy) ** 0.5;
-    var rf = ((1 - (dist / repulseDistance) ** 2)  * 100);
-    rf = (rf < 0 ? 0 : rf > 50  ? 50 : rf) / dist;
+    var rf = (1 - (dist / repulseDistance) ** 2) * 100;
+    rf = (rf < 0 ? 0 : rf > 50 ? 50 : rf) / dist;
 
     var posX = this.x + dx * rf;
     var posY = this.y + dy * rf;
 
     if (bounce) {
-      if (posX - particleSize > 0 && posX + particleSize < canvas.width) this.x = posX;
-      if (posY - particleSize > 0 && posY + particleSize < canvas.height) this.y = posY;
+      if (posX - particleSize > 0 && posX + particleSize < canvas.width)
+        this.x = posX;
+      if (posY - particleSize > 0 && posY + particleSize < canvas.height)
+        this.y = posY;
     } else {
       this.x = posX;
       this.y = posY;
@@ -305,8 +305,10 @@ class Bounds {
   top: number;
   bottom: number;
   diagonal: number;
-  constructor(x, y, w, h) { this.init(x, y, w, h) }
-  init(x,y,w,h) {
+  constructor(x, y, w, h) {
+    this.init(x, y, w, h);
+  }
+  init(x, y, w, h) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -315,18 +317,23 @@ class Bounds {
     this.right = x + w;
     this.top = y - h;
     this.bottom = y + h;
-    this.diagonal = (w * w + h * h);
+    this.diagonal = w * w + h * h;
   }
 
   contains(p) {
-    return (p.x >= this.left && p.x <= this.right && p.y >= this.top && p.y <= this.bottom);
+    return (
+      p.x >= this.left &&
+      p.x <= this.right &&
+      p.y >= this.top &&
+      p.y <= this.bottom
+    );
   }
 
   near(p) {
     if (!this.contains(p)) {
       const dx = p.x - this.x;
       const dy = p.y - this.y;
-      const dist = (dx * dx + dy * dy) - this.diagonal - linkDistance2;
+      const dist = dx * dx + dy * dy - this.diagonal - linkDistance2;
       return dist < 0;
     }
     return true;
@@ -345,14 +352,23 @@ class QuadTree {
   NW: QuadTree;
   SE: QuadTree;
   SW: QuadTree;
-  constructor(boundary: Bounds = new Bounds(canvas.width / 2,canvas.height / 2,canvas.width / 2 ,canvas.height / 2), depth = 0) {
+  constructor(
+    boundary: Bounds = new Bounds(
+      canvas.width / 2,
+      canvas.height / 2,
+      canvas.width / 2,
+      canvas.height / 2
+    ),
+    depth = 0
+  ) {
     this.boundary = boundary;
     this.divided = false;
     this.points = depth > 1 ? [] : null;
-    this.pointCount = 0
+    this.pointCount = 0;
     this.drawn = false;
     this.depth = depth;
-    if(depth === 0) {   // BM67 Fix on resize
+    if (depth === 0) {
+      // BM67 Fix on resize
       this.subdivide();
       this.NE.subdivide();
       this.NW.subdivide();
@@ -367,21 +383,33 @@ class QuadTree {
     this.drawn = true;
   }
   addToSubQuad(particle) {
-    if (this.NE.insert(particle)) { return true }
-    if (this.NW.insert(particle)) { return true }
-    if (this.SE.insert(particle)) { return true }
-    if (this.SW.insert(particle)) { return true }
+    if (this.NE.insert(particle)) {
+      return true;
+    }
+    if (this.NW.insert(particle)) {
+      return true;
+    }
+    if (this.SE.insert(particle)) {
+      return true;
+    }
+    if (this.SW.insert(particle)) {
+      return true;
+    }
     particle.quad = undefined;
   }
   insert(particle) {
-    if (this.depth > 0 && !this.boundary.contains(particle)) { return false }
+    if (this.depth > 0 && !this.boundary.contains(particle)) {
+      return false;
+    }
 
     if (this.depth > 1 && this.pointCount < QUADTREE_CAPACITY) {
       this.points[this.pointCount++] = particle;
       particle.quad = this;
       return true;
     }
-    if (!this.divided) { this.subdivide() }
+    if (!this.divided) {
+      this.subdivide();
+    }
     return this.addToSubQuad(particle);
   }
 
@@ -412,7 +440,9 @@ class QuadTree {
       if (this.depth > 1) {
         while (i--) {
           const p = this.points[i];
-          if (!p.explored && part.near(p)) { found[fc++] = p }
+          if (!p.explored && part.near(p)) {
+            found[fc++] = p;
+          }
         }
         if (this.divided) {
           fc = this.NE.pointCount ? this.NE.query(part, fc, found) : fc;
@@ -420,7 +450,7 @@ class QuadTree {
           fc = this.SE.pointCount ? this.SE.query(part, fc, found) : fc;
           fc = this.SW.pointCount ? this.SW.query(part, fc, found) : fc;
         }
-      } else if(this.divided) {
+      } else if (this.divided) {
         fc = this.NE.query(part, fc, found);
         fc = this.NW.query(part, fc, found);
         fc = this.SE.query(part, fc, found);
