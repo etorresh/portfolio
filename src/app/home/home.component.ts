@@ -5,91 +5,23 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import { Carousel } from '.././models/Carousel';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  animations: [
-    trigger('nextFace', [
-      state(
-        'show',
-        style({
-          bottom: 0,
-        })
-      ),
-      state(
-        'hide',
-        style({
-          bottom: '250px',
-        })
-      ),
-      transition('show => hide', [animate('0.5s ease-in')]),
-      transition('hide => show', [animate('0.5s ease-out')]),
-    ]),
-    trigger('nextColor', [
-      state(
-        '0',
-        style({
-          color: 'black',
-        })
-      ),
-      state(
-        '1',
-        style({
-          // blue
-          color: '#2472A3',
-        })
-      ),
-      state(
-        '2',
-        style({
-          // orange
-          color: '#CC6900',
-        })
-      ),
-      state(
-        '3',
-        style({
-          // green
-          color: '#5C946E',
-        })
-      ),
-      state(
-        '4',
-        style({
-          // red
-          color: '#EF6351',
-        })
-      ),
-      transition('* => *', [animate('0.5s ease-in')]),
-    ]),
-  ],
 })
 export class HomeComponent implements OnInit {
   repulseDistance = 300;
   x = 0;
   y = 0;
   scrollYOffset = 0;
-  public carousel = new Carousel([
-    'assets/myFace/myFace1.webp',
-    'assets/myFace/myFace2.webp',
-    'assets/myFace/myFace3.webp',
-    'assets/myFace/myFace4.webp',
-  ]);
   private repulseTimer: any;
   public repulseScale = 0;
   public speedScale = 1;
   public whiteBackground = true;
+  public showParticles = true;
   @ViewChild('card1') card1: ElementRef | undefined;
   @ViewChild('card2') card2: ElementRef | undefined;
   @ViewChild('card3') card3: ElementRef | undefined;
@@ -97,18 +29,18 @@ export class HomeComponent implements OnInit {
   @ViewChild('card5') card5: ElementRef | undefined;
   @ViewChild('card6') card6: ElementRef | undefined;
 
-  public lettersColor = new Array(13).fill(0);
-
   ngOnInit() {
-    console.log(
-      "%c Hello! \n Thank you for visiting my portfolio.\n There's nothing else to see in the console, but I'm glad you checked.\n Oh! Before you go, I also want to let you know that I'm looking for new opportunities. Feel free to reach out! \n Have a great day!",
-      'background: #222; color: #bada55'
-    );
+    this.showParticles = innerWidth <= 2000;
   }
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     this.scrollYOffset = -window.scrollY;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.showParticles = innerWidth <= 2000;
   }
 
   onCardHover(event: MouseEvent, cardId: number) {
@@ -221,18 +153,5 @@ export class HomeComponent implements OnInit {
         '</ul>' +
         '</div>',
     });
-  }
-
-  public changeColor(charId: number, infect = true) {
-    if (this.lettersColor[charId] == 4) {
-      this.lettersColor[charId] = 0;
-    } else {
-      this.lettersColor[charId]++;
-    }
-    if (infect) {
-      if (charId != this.lettersColor.length - 1)
-        this.changeColor(charId + 1, false);
-      if (charId != 0) this.changeColor(charId - 1, false);
-    }
   }
 }

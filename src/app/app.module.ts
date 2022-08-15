@@ -7,9 +7,10 @@ import { ParticlesDirective } from './directives/particles.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ScullyLibModule } from '@scullyio/ng-lib';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, ParticlesDirective, HomeComponent],
+  declarations: [AppComponent, ParticlesDirective, HomeComponent, HeaderComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
