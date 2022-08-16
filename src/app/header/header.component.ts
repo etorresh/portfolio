@@ -102,6 +102,7 @@ export class HeaderComponent implements OnInit {
     const colorsParam = url.searchParams.get('colors')?.split('').map(Number);
     if (
       colorsParam !== undefined &&
+      colorsParam.length <= 13 &&
       colorsParam.every((element) => {
         return (
           element === 0 ||
@@ -128,24 +129,28 @@ export class HeaderComponent implements OnInit {
       if (charId != 0) this.changeColor(charId - 1, false);
     }
     if (infect) {
-      this.router.navigate([], {
-        relativeTo: this.route,
-        queryParams: {
-          face: this.faceId,
-          colors: this.lettersColor.join(''),
-        },
-        queryParamsHandling: 'merge',
-        replaceUrl: true,
-      });
+      this.updateQueryParams();
     }
   }
 
   public changeFace() {
     this.carousel.nextImage();
     this.faceId = (this.faceId + 1) % 4;
+    this.updateQueryParams();
+  }
+
+  private updateQueryParams() {
+    let faceParam: Number | undefined;
+    let colorsParam: string | undefined;
+    if (this.faceId != 0) {
+      faceParam = this.faceId;
+    }
+    if (!this.lettersColor.every((element) => element === 0)) {
+      colorsParam = this.lettersColor.join('');
+    }
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { face: this.faceId, colors: this.lettersColor.join('') },
+      queryParams: { face: faceParam, colors: colorsParam },
       queryParamsHandling: 'merge',
       replaceUrl: true,
     });
