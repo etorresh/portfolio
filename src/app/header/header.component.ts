@@ -7,7 +7,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Carousel } from '../models/Carousel';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -68,14 +68,53 @@ import { Carousel } from '../models/Carousel';
     ]),
   ],
 })
-export class HeaderComponent {
-  public carousel = new Carousel([
+export class HeaderComponent implements OnInit {
+  constructor(private router: Router, private route: ActivatedRoute) {}
+  faceUrls = [
     'assets/myFace/myFace1.webp',
     'assets/myFace/myFace2.webp',
     'assets/myFace/myFace3.webp',
     'assets/myFace/myFace4.webp',
-  ]);
+  ];
+
+  private faceId = 0;
+  public carousel = new Carousel(this.faceUrls);
   public lettersColor = new Array(13).fill(0);
+
+  ngOnInit(): void {
+    const url = new URL(window.location.href);
+
+    const faceIdParam = Number(url.searchParams.get('face'));
+    if (
+      faceIdParam !== 0 &&
+      faceIdParam !== NaN &&
+      faceIdParam >= 0 &&
+      faceIdParam <= 3
+    ) {
+      this.carousel = new Carousel([
+        this.faceUrls[faceIdParam],
+        this.faceUrls[(faceIdParam + 1) % 4],
+        this.faceUrls[(faceIdParam + 2) % 4],
+        this.faceUrls[(faceIdParam + 3) % 4],
+      ]);
+      this.faceId = faceIdParam;
+    }
+    const colorsParam = url.searchParams.get('colors')?.split('').map(Number);
+    if (
+      colorsParam !== undefined &&
+      colorsParam.every((element) => {
+        return (
+          element === 0 ||
+          element === 1 ||
+          element === 2 ||
+          element === 3 ||
+          element === 4
+        );
+      })
+    ) {
+      this.lettersColor = colorsParam;
+    }
+  }
 
   public changeColor(charId: number, infect = true) {
     if (this.lettersColor[charId] == 4) {
@@ -88,5 +127,27 @@ export class HeaderComponent {
         this.changeColor(charId + 1, false);
       if (charId != 0) this.changeColor(charId - 1, false);
     }
+    if (infect) {
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: {
+          face: this.faceId,
+          colors: this.lettersColor.join(''),
+        },
+        queryParamsHandling: 'merge',
+        replaceUrl: true,
+      });
+    }
+  }
+
+  public changeFace() {
+    this.carousel.nextImage();
+    this.faceId = (this.faceId + 1) % 4;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { face: this.faceId, colors: this.lettersColor.join('') },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
   }
 }
