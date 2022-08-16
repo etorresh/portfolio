@@ -1,6 +1,15 @@
-html, body {
-  font-family: 'Roboto', sans-serif;
+html,
+body {
+  font-family: "Roboto", sans-serif;
   margin: 0;
+}
+
+/* prevents scrollbar content shifting */
+html {
+  margin-right: calc(100% - 100vw);
+}
+body {
+  margin-right: calc(100vw - 100%);
 }
 
 li:not(:last-child) {
