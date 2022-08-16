@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
   scrollYOffset = 0;
   private repulseTimer: any;
   public repulseScale = 0;
+  public coverOpacity = 1;
   public speedScale = 1;
-  public whiteBackground = true;
   public showParticles = true;
   @ViewChild('card1') card1: ElementRef | undefined;
   @ViewChild('card2') card2: ElementRef | undefined;
@@ -43,8 +43,9 @@ export class HomeComponent implements OnInit {
     this.showParticles = innerWidth <= 2000;
   }
 
-  onCardHover(event: MouseEvent, cardId: number) {
+  onCardHover(_event: MouseEvent, cardId: number) {
     clearInterval(this.repulseTimer);
+    if (this.repulseScale > 0.6) this.repulseScale = 0.6;
     switch (cardId) {
       case 1: {
         this.x = this.card1?.nativeElement.offsetLeft + 150;
@@ -77,13 +78,17 @@ export class HomeComponent implements OnInit {
         break;
       }
     }
-    this.whiteBackground = false;
     this.repulseTimer = setInterval(() => {
+      if (!(this.coverOpacity > 0) && !(this.repulseScale < 1)) {
+        clearInterval(this.repulseTimer);
+      }
       if (this.repulseScale < 1) {
         this.repulseScale += 0.02;
       } else {
         this.speedScale = 0.2;
-        clearInterval(this.repulseTimer);
+      }
+      if (this.coverOpacity > 0) {
+        this.coverOpacity -= 0.02;
       }
     }, 10);
   }
@@ -92,11 +97,14 @@ export class HomeComponent implements OnInit {
     clearInterval(this.repulseTimer);
     this.speedScale = 1;
     this.repulseTimer = setInterval(() => {
+      if (!(this.repulseScale > 0) && !(this.coverOpacity < 1)) {
+        clearInterval(this.repulseTimer);
+      }
       if (this.repulseScale > 0) {
         this.repulseScale -= 0.01;
-      } else {
-        this.whiteBackground = true;
-        clearInterval(this.repulseTimer);
+      }
+      if (this.coverOpacity < 1) {
+        this.coverOpacity += 0.01;
       }
     }, 30);
   }
