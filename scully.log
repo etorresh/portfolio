@@ -462,3 +462,20 @@ handleUnknownRoute: "/favicon.ico", 404:""
           The defaultRouteRenderer is now set to 'routeRenderer'.
        ======================================================================
 (You can skip this, or any future question by using the --noPrompt flag)
+ Deprication Notice:
+       ======================================================================
+         From now on, the plugin that is being used to render a route is
+         able to be changed by the user. You can do this by adding or
+         enabling the plugin in the scully.json file. For your convenience,
+         we loaded the Puppeteer plugin for you.
+
+         To disable this warning enable the plugin of your choice.
+         for Puppteer please add:
+             import '@scullyio/scully-plugin-puppeteer';
+          to your scully.portfolio-simplified.config.ts file.
+
+          When you get this warning while not using scully-plugin-puppeteer
+          you need to set the defaultRouteRenderer to the name of your plugin.
+          The defaultRouteRenderer is now set to 'routeRenderer'.
+       ======================================================================
+(You can skip this, or any future question by using the --noPrompt flag)

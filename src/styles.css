@@ -5,12 +5,12 @@ body {
 }
 
 /* prevents scrollbar content shifting */
-html {
+/* html {
   margin-right: calc(100% - 100vw);
 }
 body {
   margin-right: calc(100vw - 100%);
-}
+} */
 
 li:not(:last-child) {
   margin-bottom: 15px;
