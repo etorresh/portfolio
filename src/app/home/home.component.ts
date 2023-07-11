@@ -111,17 +111,16 @@ export class HomeComponent implements OnInit {
 
   swalTravelpal() {
     Swal.fire({
-      title: 'Full Stack Developer',
+      title: 'Angular Front-End Intern',
       confirmButtonColor: '#2472a3',
       html:
         '<div style="text-align: left">' +
         'Our main task was to develop a web app MVP for hotel guests to book a room, view room layouts, ' +
         'reserve hotel activities, order room service, and interact with a hotel map.' +
         '<ul>' +
-        '<li>Wrote and styled the Angular components to meet the requirements of our mocks.</li>' +
-        '<li>Worked alongside another developer to create an API using .NET Core Web API.</li>' +
-        '<li>Implemented the API endpoints to the front-end.</li>' +
-        '<li>Built extensive test coverage for all new and old features.</li>' +
+        '<li>Led the design and development of robust Angular components, aligning with project specifications.</li>' +
+        '<li>Assisted in integrating the back-end responses with the front-end.</li>' +
+        '<li>Employed best practices in writing comprehensive unit tests for all new features and existing ones, ensuring high code quality and application reliability.</li>' +
         '</ul>' +
         '</div>',
     });
@@ -147,17 +146,17 @@ export class HomeComponent implements OnInit {
 
   swalRocSystems() {
     Swal.fire({
-      title: 'Intern Software Developer',
+      title: 'Software Development Intern',
       confirmButtonColor: '#2472a3',
       html:
         '<div style="text-align: left">' +
         'During high school, I interned at RocSystems. I was able to work on a variety of different projects and learn from a great team. ' +
-        'My main tasks involved web development using PHP and jQuery, and Python using a Raspberry Pi.' +
+        'My main tasks involved web development using PHP and JavaScript, and Python using a Raspberry Pi.' +
         '<ul>' +
-        '<li>Added back-end and front-end features to a web application using PHP and jQuery.</li>' +
-        '<li>Developed an automated sales report system using PHP.</li>' +
-        '<li>Automated the deployment of servers changes using Python.</li>' +
-        '<li>Decreased user wait time by introducing multithreading to the existing software using Python.</li>' +
+        '<li>Enhanced the functionality of a web application by implementing dynamic features using PHP and JavaScript, improving user experience and site efficiency.</li>' +
+        '<li>Developed an automated sales reporting system using PHP, streamlining business processes and improving the accuracy of sales data.</li>' +
+        '<li>Leveraged Python to automate server deployment processes, significantly reducing manual effort and potential errors.</li>' +
+        '<li>Optimized application performance and improved user experience by implementing multithreading in the existing Python-based software.</li>' +
         '</ul>' +
         '</div>',
     });
